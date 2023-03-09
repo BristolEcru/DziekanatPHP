@@ -20,8 +20,10 @@ public function removeStudent($indeks)
     $this->deleteStudent($indeks);
 }
 
-public function getId() {
-    return $this->id;
+public function changeStudent($id, $imie, $nazwisko, $indeks, $semestr)
+{
+    $this->editStudent($id, $imie, $nazwisko, $indeks, $semestr);
+    
   }
   
   public function getImie() {

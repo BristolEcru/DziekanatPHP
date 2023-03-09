@@ -1,6 +1,6 @@
 <?php
 
-include 'C:\xampp\htdocs\PHP_NTW_1_DZIEKANAT\includes\autoloader.php';
+include 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 
 if(isset($_POST["submit"])) {   
     $imie= $_POST["imie"];

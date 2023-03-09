@@ -1,5 +1,5 @@
 <?php
-require 'C:\xampp\htdocs\PHP_NTW_1_DZIEKANAT\includes\autoloader.php';
+require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 
 ?>
 
@@ -56,7 +56,11 @@ require 'C:\xampp\htdocs\PHP_NTW_1_DZIEKANAT\includes\autoloader.php';
 						<td>' . $student['semestr'] . '</td>
 						<td>
                         <div>
-                        <a href="EditStudentView.php?indeks='.$student['indeks'].'"><button style="display: inline-block;">  Edytuj </button></a> 
+                    <form action="EditStudentView.php" method="POST" style="display: inline-block;">
+                        <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
+                        <button type="submit"> Edytuj </button>
+                   </form>
+                       
                                 <form action="deleteStudent.php" method="POST" style="display: inline-block;">
                                      <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
                                      <button type="submit"> Usuń </button>

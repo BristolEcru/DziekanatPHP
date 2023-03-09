@@ -1,5 +1,5 @@
 <?php
-require( 'C:\xampp\htdocs\PHP_NTW_1_DZIEKANAT\includes\autoloader.php');
+require( 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
 class StudentModel extends Dbh
 {
     public $id;
@@ -58,11 +58,15 @@ public function deleteStudent($indeks)
     
 }
     
-
+public function editStudent($id, $imie, $nazwisko, $indeks, $semestr)
+{
+    $this->id=$id;
+    $sql= "UPDATE students SET imie = ?, nazwisko = ?, indeks = ?, semestr = ? WHERE id = ? ";
+    $statement = $this-> connect()->prepare($sql);
+    $statement->execute([$imie, $nazwisko, $indeks, $semestr, $id]);
 }
 
-
-
+}
 
 //var_dump($Student);
 

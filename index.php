@@ -1,5 +1,5 @@
 <?php
-	require 'C:\xampp\htdocs\PHP_NTW_1_DZIEKANAT\includes\autoloader.php';
+	require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 ?>
 
 <!DOCTYPE html>

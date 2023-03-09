@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost/PHP_NTW_1_DZIEKANAT/index.php",
+            "url": "http://localhost/DziekanatPHP/index.php",
             "webRoot": "${workspaceFolder}"
         }
     ]
