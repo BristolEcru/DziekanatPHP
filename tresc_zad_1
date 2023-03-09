@@ -1,0 +1,17 @@
+NTW
+Lista 1 (termin 14.03.2023)
+Zadanie 1 (25 pkt.)
+Przygotuj aplikację WEB (bazującą na PHP + baza danych) bez posługiwania się jakimś frameworkiem, 
+która będzie w ograniczonym zakresie obsługiwała dziekanat. Aplikacje obsługuje dane o 
+następującym zakresie:
+ Student opisany jest podstawowymi atrybutami takimi jak nr albumu, imię i nazwisko, 
+aktualny semestr studiów. Studentów może być od 1 do n. Aplikacja pozwala dodawa, 
+edytować i usuwać studentów.
+ Każdy ze studentów w danym momencie studiuje na określonym (1 z 7) semestrze, gromadzi 
+również historię o semestrach, na których studiował wcześniej. Aplikacja musi pozwalać 
+zapisać studenta na wybrany semestr.
+ W każdym z semestrów student ma do zaliczenia szereg przedmiotów (od 1 do n). Lista 
+przedmiotów obowiązujących na poszczególnych semestrach jest zarządzana niezależnie.
+ Każdy z przedmiotów może być oceniony, każda z ocen składa się ze stopnia (od 2 do 5), daty 
+wpisu oraz imienia i nazwiska prowadzącego. Oczywiście oceny mogą być ustalane, usuwane 
+i edytowane.
