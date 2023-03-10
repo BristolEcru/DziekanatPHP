@@ -26,30 +26,15 @@
 	</header>
 	<main>
 		<section>
-			<h2>Lista studentów</h2>
+		<a href="classes/ListOfStudentsView.php"><button><h2>Lista studentów</h2></button></a>
+			
 
-			<table>
-				<thead>
-					<tr>
-						<th>Nr albumu</th>
-						<th>Imię i nazwisko</th>
-						<th>Semestr</th>
-						<th>Akcje</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						
-					</tr>
-					
-				</tbody>
-			</table>
-		<a href="includes/formNewStudent.php">	<button>Dodaj studenta</button></a>
+		
+		
 		</section>
+		<a href="classes/FormNewStudentView.php">	<button>Dodaj studenta</button></a>
 		<section>
-			<h2>Szczegóły studenta</h2>
-			<h3>Michał Karaś Nr albumu: 123456 Semestr: 5</h3>
-			<br>
+			
 			<h4>Historia semestrów</h4>
 			<ul>
 				<li>1</li>
