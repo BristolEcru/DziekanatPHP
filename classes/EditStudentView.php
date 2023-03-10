@@ -31,7 +31,7 @@ if(isset($_POST["indeks"]))
                 <form action="editStudent.php" method="POST">
           
                     <input type="hidden" name="wyslano" id="wyslano" value="1">
-                    <input type="hidden" name="id" id="id" value="<?php $student['id']; ?>">
+                    <input type="hidden" name="id" id="id" value="<?php echo $student['id']; ?>">
                     <p>Edytuj dane studenta: </p>
                     <div class="form-group"> <label for="imie">Imię:</label>
                         <input type="text" class="form-control" id="imie" value="<?php echo $student['imie']; ?>" name="imie" >

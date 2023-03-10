@@ -54,10 +54,8 @@
 						<td>'.$student['imie'] . ' ' . $student['nazwisko'] . '</td>
 						<td>'.$student['semestr'].'</td>
 						<td>
-						
-							<a href="StudentView.php?indeks='.$student['indeks'].'"><button> Szczegóły studenta </button></a>
-							<button>Edytuj</button>
-							<button>Usuń</button>
+													<a href="StudentView.php?indeks='.$student['indeks'].'"><button> Szczegóły studenta </button></a>
+							
 						</td>
 					</tr>';
 				}
