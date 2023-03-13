@@ -1,6 +1,5 @@
-
 <?php
-	require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
+require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 
 ?>
 
@@ -23,15 +22,16 @@
                 <form action="createNewStudent.php" method="POST">
                     <input type="hidden" name="wyslano" id="wyslano" value="1">
                     <hr>
-                
+
                     <h4 style="bold">Wpisz dane nowego studenta: </h4>
                     <hr>
                     <div class="form-group"> <label for="imie">Imię:</label>
                         <input type="text" class="form-control" id="imie" name="imie" placeholder="Imię Studenta">
                     </div>
                     <div class="form-group">
-                        <label for="nazwisko" >Nazwisko: </label>
-                        <input type="text" class="form-control" id="nazwisko" name="nazwisko" placeholder="Nazwisko Studenta">
+                        <label for="nazwisko">Nazwisko: </label>
+                        <input type="text" class="form-control" id="nazwisko" name="nazwisko"
+                            placeholder="Nazwisko Studenta">
                     </div>
 
                     <div class="form-group">
@@ -40,10 +40,12 @@
                     </div>
                     <div class="form-group">
                         <label for="semestr">Semestr:</label>
-                        <input type="text" class="form-control" id="semestr" name="semestr" placeholder="Aktualny semestr">
+                        <input type="text" class="form-control" id="semestr" name="semestr"
+                            placeholder="Aktualny semestr">
                     </div>
-</br>
-                    <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block" width="">Zatwierdź wprowadzone dane</button>
+                    </br>
+                    <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block" width="">Zatwierdź
+                        wprowadzone dane</button>
                 </form>
             </div>
         </div>

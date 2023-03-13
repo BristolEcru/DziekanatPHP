@@ -1,44 +1,29 @@
 <?php
 require('C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
-class StudentModel extends Dbh
+class SubjectModel extends StudentController
 {
-    public $id;
-    public $imie;
-    public $nazwisko;
-    public $indeks;
-    public $semestr;
-
-
+    private $id_subject;
+    private $subject;
+    private $id_term;
 
     public function __construct()
     {
     }
-    // public function __construct($imie, $nazwisko, $indeks, $semestr)
+
+    // public function __construct($id_subject, $subject, $id_term)
     // {
-    //     $this->imie = $imie;
-    //     $this->nazwisko = $nazwisko;
-    //     $this->indeks = $indeks;
-    //     $this->semestr = $semestr;
+    //     $this->id_subject = $id_subject;
+    //     $this->subject = $subject;
+    //     $this->id_term = $id_term;
     // }
 
 
-    public function getStudents()
+    public function getSubjects($term)
     {
-        $sql = "SELECT * FROM students";
-        $statement = $this->connect()->query($sql);
-        $students = array();
-        while ($row = $statement->fetch()) {
-            $students[] = $row;
-            // echo $row['imie'].$row['nazwisko'].'<br/>';
-        }
-        return $students;
-    }
-    public function getStudent($indeks)
-    {
-        $this->indeks = $indeks;
-        $sql = "SELECT * from students where indeks = ?";
+        $this->id_term = $term;
+        $sql = "SELECT * from subjects where id_term = ?";
         $statement = $this->connect()->prepare($sql);
-        $statement->execute([$indeks]);
+        $statement->execute([$term]);
 
         $result = $statement->fetchAll();
         return $result[0];
@@ -66,8 +51,33 @@ class StudentModel extends Dbh
         $statement->execute([$imie, $nazwisko, $indeks, $semestr, $id]);
     }
 
+    public function getIdSubject()
+    {
+        return $this->id_subject;
+    }
 
+    public function setIdSubject($id_subject)
+    {
+        $this->id_subject = $id_subject;
+    }
 
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    public function getIdTerm()
+    {
+        return $this->id_term;
+    }
+
+    public function setIdTerm($id_term)
+    {
+        $this->id_term = $id_term;
+    }
 }
-
-//var_dump($Student);
