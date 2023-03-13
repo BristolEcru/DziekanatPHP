@@ -21,6 +21,14 @@ class GradeModel extends StudentController
     //     $this->id_student = $id_student;
     //     $this->id_acca = $id_acca;
     // }
+
+    public function addGrade($grade, $id_student, $id_subject, $id_term)
+    {
+
+        $sql = "INSERT INTO grades (grade, id_subject, id_student, id_term ) values (?,?,?,?)";
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute([$grade, $id_subject, $id_student, $id_term]);
+    }
     public function getGrades($id_student, $id_subject)
     {
         $this->id_student = $id_student;

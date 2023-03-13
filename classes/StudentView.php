@@ -39,9 +39,9 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
         $grade1 = new GradeModel();
         $grades = array();
         $grades = $grade1->getGrades((int) $student['id'], (int) $subjects['id_subject']);
-        var_dump($grades);
-        echo "przerwa";
-        var_dump((int) $student['id'], (int) $subjects['id_subject']);
+        // var_dump($grades);
+        // echo "            ";
+        // var_dump((int) $student['id'], (int) $subjects['id_subject']);
         
         echo '  <section>
             <h2>Lista studentów</h2>
@@ -60,21 +60,22 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 						<td>' . $student['indeks'] . '</td>
 						<td>' . $student['imie'] . ' ' . $student['nazwisko'] . '</td>
 						<td>' . $student['semestr'] . '</td>
-						
+						<td>
                         <div>
-                    <form action="EditStudentView.php" method="POST" style="display: inline-block;">
-                        <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
-                        <button type="submit"> Edytuj </button>
-                   </form>
+                                <form action="EditStudentView.php" method="POST" style="display: inline-block;">
+                                    <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
+                                    <button type="submit"> Edytuj </button>
+                                </form>
                        
                                 <form action="deleteStudent.php" method="POST" style="display: inline-block;">
                                      <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
                                      <button type="submit"> Usuń </button>
                                 </form>
-                                <form action="Grades\FormNewGradeView.php" method="POST" style="display: inline-block;">
-                                <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
-                                <button type="submit"> Dodaj ocenę </button>
-                           </form>
+
+                                <form action="FormNewGradeView.php" method="POST" style="display: inline-block;">
+                                     <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
+                                        <button type="submit"> Dodaj ocenę </button>
+                                 </form>
                     </div>
 						</td>
 					</tr>
@@ -83,7 +84,8 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
             </table>
 
         </section>
-
+        ';
+        ?>
         <section>
             <h2>Lista ocen</h2>
 
@@ -98,28 +100,33 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
                     </tr>
                 </thead>
                 <tbody>
+
+
                     <tr>
-                        <td>' . $student['semestr'] . '</td>
-                        <td>' . $subjects['subject'] . ' </td>
-                        
                         <td>
-                        <?php foreach ($grades as $grade): ?>
-                            <?php echo $grade['grade'] . ", "; ?>
-                        <?php endforeach; ?>
-                    </td>
-                    
-
-
-                         
-                        <td>' . $accas['acca'] . '</td>
+                            <?php echo $student['semestr']; ?>
+                        </td>
+                        <td>
+                            <?php echo $subjects['subject']; ?>
+                        </td>
+                        <td>
+                            <?php foreach ($grades as $grade): ?>
+                                <?php echo $grade['grade'] . '   '; ?>
+                            <?php endforeach; ?>
+                        </td>
+                        <td>
+                            <?php echo $accas['acca']; ?>
+                        </td>
+                        <td>
+                            <?php echo $grade['date']; ?>
+                        </td>
                     </tr>
-                   
-                    
+
+
                 </tbody>
             </table>
         </section>
-        ';
-        ?>
+
     </main>
     <footer>
         <p>Copyright © 2023 Dziekanat</p>

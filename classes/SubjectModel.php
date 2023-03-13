@@ -18,6 +18,8 @@ class SubjectModel extends StudentController
     // }
 
 
+
+
     public function getSubjects($term)
     {
         $this->id_term = $term;
