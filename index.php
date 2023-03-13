@@ -1,5 +1,5 @@
 <?php
-	require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
+require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,23 +26,18 @@
 	</header>
 	<main>
 		<section>
-		<a href="classes/ListOfStudentsView.php"><button><h2>Lista studentów</h2></button></a>
-			
+			<a href="classes/ListOfStudentsView.php"><button>
+					<h2>Lista studentów</h2>
+				</button></a>
 
-		
-		
+
+
+
 		</section>
-		<a href="classes/FormNewStudentView.php">	<button>Dodaj studenta</button></a>
+		<a href="classes/FormNewStudentView.php"> <button>Dodaj studenta</button></a>
 		<section>
-			
-			<h4>Historia semestrów</h4>
-			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-			</ul>
+
+
 			<h4>Oceny</h4>
 			<table>
 				<thead>
