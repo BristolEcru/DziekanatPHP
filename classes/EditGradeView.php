@@ -3,21 +3,13 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 ?>
 <?php
 
-if (isset($_POST["id_grade"])) {
-    $indeks = $_POST["id_grade"];
-    $indeks = $_POST["grade"];
+if (isset($_POST["id_grade"]) && isset($_POST["grade"])) {
+    $id_grade = $_POST["id_grade"];
+    $grade = $_POST["grade"];
 
-    $grade1 = new GradeModel();
-    if (isset($_POST["id_grade"]) && isset($_POST["grade"])) {
-        $id_grade = $_POST["id_grade"];
-        $grade = $_POST["grade"];
-
-        $grade1 = new GradeModel();
-        $grade1->editGrade($id_grade, $grade);
-    }
-
-    $grade1->editGrade($id_grade, $grade);
 }
+
+
 ?>
 <html>
 
@@ -30,24 +22,24 @@ if (isset($_POST["id_grade"])) {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <form action="editGrade.php" method="POST">
+<body <div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="editGrade.php" method="POST">
 
-                    <input type="hidden" name="wyslano" id="wyslano" value="1">
+                <input type="hidden" name="wyslano" id="wyslano" value="1">
+                <input type="hidden" name="id_grade" id="id_grade" value="<?php echo $id_grade; ?>">
 
-                    <div class="form-group">
-                        <label for="indeks"> Ocena: </label>
-                        <input type="text" class="form-control" id="grade" name="grade" value="<?php echo $grade; ?>">
-                    </div>
+                <div class="form-group">
+                    <label for="indeks"> Ocena: </label>
+                    <input type="text" class="form-control" id="grade" name="grade" value="<?php echo $grade; ?>">
+                </div>
 
-                    </br>
-                    <button type="submit" name="submit" class="btn btn-primary">Zatwierdź wprowadzone dane</button>
-                </form>
-            </div>
+                </br>
+                <button type="submit" name="submit" class="btn btn-primary">Zatwierdź wprowadzone dane</button>
+            </form>
         </div>
+    </div>
     </div>
 </body>
 

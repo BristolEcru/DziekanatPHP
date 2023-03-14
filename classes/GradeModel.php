@@ -53,7 +53,7 @@ class GradeModel extends StudentController
     }
     public function editGrade($id_grade, $grade)
     {
-        $this->grade = $grade;
+
         $sql = "UPDATE grades SET grade = ? WHERE id_grade = ? ";
         $statement = $this->connect()->prepare($sql);
         $statement->execute([$grade, $id_grade]);

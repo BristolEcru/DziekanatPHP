@@ -48,7 +48,21 @@ if (isset($_GET["submit"])) {
 
                     <h4 style="bold">Wpisz ocenę: </h4>
                     <hr>
+
+
                     <div class="form-group">
+                        <label for="id_subject">Przedmiot:</label>
+                        <select class="form-control" id="id_subject" name="id_subject">
+                            <?php foreach ($subjects as $subject): ?>
+                                <option value="<?= $subject["id_subject"] ?>"><?= $subject["subject"] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+
+
+
+                    <!-- <div class="form-group">
                         <label for="subject">Przedmiot:</label>
                         <select class="form-control" id="id_subject" name="id_subject">
                             <option value="1">Wstęp do programowania</option>
@@ -59,15 +73,14 @@ if (isset($_GET["submit"])) {
                             <option value="6">Systemy wbudowane</option>
                             <option value="7">Programowanie obiektowe</option>
                             <option value="8">Fizyka</option>
-                            <option value="9">Programowanie niskopoziomowe
-                            </option>
+                            <option value="9">Programowanie niskopoziomowe</option>
                             <option value="10">Podstawy Javy</option>
                             <option value="11">Java</option>
                             <option value="12">Platforma .NET</option>
                             <option value="13">Mutimedia</option>
                             <option value="14">Projekt</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="grade">Ocena:</label>

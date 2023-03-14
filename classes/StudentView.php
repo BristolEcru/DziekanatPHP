@@ -54,7 +54,7 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
         
         echo '  <section>
             <h2>Lista studentów</h2>
-            <a href="includes/FormNewStudentView.php"><button>Dodaj studenta</button></a>
+          
             <table>
                 <thead>
                     <tr>
@@ -108,7 +108,7 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
                         <th>Przedmiot</th>
 
                         <th>Oceny</th>
-                        <th>Wystawione przez</th>
+                        <th>Wykładowca</th>
                         <th>Szczegóły ocen</th>
                     </tr>
                 </thead>
