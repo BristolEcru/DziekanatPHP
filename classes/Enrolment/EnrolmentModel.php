@@ -2,10 +2,10 @@
 require('C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
 class Enrolment
 {
-    private $id_enrolment;
-    private $id_term;
-    private $id_student;
-    private $id_subject;
+    public $id_enrolment;
+    public $id_term;
+    public $id_student;
+    public $id_subject;
     public function __construct()
     {
     }

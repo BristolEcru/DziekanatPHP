@@ -2,9 +2,9 @@
 require('C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
 class AccaModel extends StudentController
 {
-    private $id_acca;
-    private string $acca;
-    private $id_subject;
+    public $id_acca;
+    public $acca;
+    public $id_subject;
     public function __construct()
     {
     }
@@ -13,16 +13,32 @@ class AccaModel extends StudentController
     //     $this->acca = $acca;
     //     $this->id_subject = $id_subject;
     // }
-    public function getAccas($id_subject)
+    public function getAccas()
     {
-        $this->id_subject = $id_subject;
-        $sql = "SELECT * from acca where id_subject = ?";
+
+        $sql = "SELECT * from acca";
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute();
+        $result = array();
+        while ($row = $statement->fetch()) {
+            $result[] = $row;
+        }
+        return $result;
+    }
+    public function getAccasBySubjects($id_subject)
+    {
+
+        $sql = "SELECT * FROM acca WHERE id_subject =?";
         $statement = $this->connect()->prepare($sql);
         $statement->execute([$id_subject]);
-
-        $result = $statement->fetchAll();
-        return $result[0];
+        $result = array();
+        while ($row = $statement->fetch()) {
+            $result[] = $row;
+        }
+        return $result;
     }
+
+
     public function getIdAcca()
     {
         return $this->id_acca;

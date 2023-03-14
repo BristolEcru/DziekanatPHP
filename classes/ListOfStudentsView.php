@@ -1,6 +1,6 @@
 <?php
-	require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
-	
+require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	
+
 	<header>
 		<h1>Dziekanat</h1>
 		<nav>
@@ -31,7 +31,7 @@
 			<h2>Lista studentów</h2>
 			<a href="FormNewStudentView.php"><button>Dodaj studenta</button></a>
 
-		
+
 			<table>
 				<thead>
 					<tr>
@@ -41,32 +41,32 @@
 						<th>Akcje</th>
 					</tr>
 				</thead>
-				
-	
-	
+
+
+
 				<tbody>
 					<?php
-	$student1 = new StudentModel();
-	$students= $student1->getStudents();
-				foreach ($students as $student) {
-					echo '<tr>
-						<td>'.$student['indeks'].'</td>
-						<td>'.$student['imie'] . ' ' . $student['nazwisko'] . '</td>
-						<td>'.$student['semestr'].'</td>
+					$student1 = new StudentModel();
+					$students = $student1->getStudents();
+					foreach ($students as $student) {
+						echo '<tr>
+						<td>' . $student['indeks'] . '</td>
+						<td>' . $student['imie'] . ' ' . $student['nazwisko'] . '</td>
+						<td>' . $student['semestr'] . '</td>
 						<td>
-													<a href="StudentView.php?indeks='.$student['indeks'].'"><button> Szczegóły studenta </button></a>
+						<a href="StudentView.php?indeks=' . $student['indeks'] . '"><button> Szczegóły studenta </button></a>
 							
 						</td>
 					</tr>';
-				}
-				
-				?>
+					}
+
+					?>
 				</tbody>
-			
+
 			</table>
-	
+
 		</section>
-		
+
 	</main>
 	<footer>
 		<p>Copyright © 2023 Dziekanat</p>

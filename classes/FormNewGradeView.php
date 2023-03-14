@@ -3,20 +3,23 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 ?>
 <?php
 
-if (isset($_POST["indeks"])) {
-    $indeks = $_POST["indeks"];
 
+// Sprawdzenie, czy formularz został wysłany
+if (isset($_GET["submit"])) {
+    $indeks = $_GET["indeks"];
     $student1 = new StudentController();
     $student = $student1->grabStudent($indeks);
     $term = $student['semestr'];
     $sub = new SubjectModel();
     $subjects = array();
-    $subjects = $sub->getSubjects($term);
-    // $acca1 = new AccaModel();
-    // $accas = array();
-    // $accas = (array) $acca1->getAccas($subjects['id_subject']);
+    $subjects = $sub->getSubjectsInTerm($term);
 
+} else {
+    // W przypadku, gdy formularz nie został jeszcze wysłany,
+    // wartości pól <input> ustawiane są na puste wartości lub domyślne
+    $student = array('id' => '9', 'semestr' => '9');
 }
+
 ?>
 <html>
 
@@ -35,8 +38,11 @@ if (isset($_POST["indeks"])) {
             <div class="col-sm-4">
                 <form action="createNewGrade.php" method="POST">
                     <input type="hidden" name="wyslano" id="wyslano" value="1">
-                    <input type="hidden" name="id_student" id="id_student" value="<?php $student['id'] ?>">
-                    <input type="hidden" name="id_term" id="id_term" value="<?php $student['semestr'] ?>">
+                    <input type="hidden" name="id_student" id="id_student" value="<?php echo $student['id'] ?>">
+                    <input type="hidden" name="id_term" id="id_term" value="<?php echo $student['semestr'] ?>">
+                    <input type="hidden" name="id_acca" id="id_acca" value="7">
+                    ...
+
 
                     <hr>
 
@@ -52,6 +58,14 @@ if (isset($_POST["indeks"])) {
                             <option value="5">Sieci komputerowe</option>
                             <option value="6">Systemy wbudowane</option>
                             <option value="7">Programowanie obiektowe</option>
+                            <option value="8">Fizyka</option>
+                            <option value="9">Programowanie niskopoziomowe
+                            </option>
+                            <option value="10">Podstawy Javy</option>
+                            <option value="11">Java</option>
+                            <option value="12">Platforma .NET</option>
+                            <option value="13">Mutimedia</option>
+                            <option value="14">Projekt</option>
                         </select>
                     </div>
 

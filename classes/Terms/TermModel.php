@@ -2,8 +2,8 @@
 require('C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
 class Terms
 {
-    private $id_term;
-    private $term;
+    public $id_term;
+    public $term;
     public function __construct()
     {
     }

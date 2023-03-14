@@ -27,18 +27,27 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
     </header>
     <main>
         <?php
-        $indeks = $_GET['indeks'];
+        $indeks = $_GET["indeks"];
         $student1 = new StudentController();
         $student = $student1->grabStudent($indeks);
         $sub = new SubjectModel();
         $subjects = array();
-        $subjects = $sub->getSubjects($student['semestr']);
+        $subjects = $sub->getSubjectsInTerm($student['semestr']);
+
         $acca1 = new AccaModel();
         $accas = array();
-        $accas = $acca1->getAccas($subjects['id_subject']);
+        $accas = $acca1->getAccasBySubjects($subjects[0]['id_subject']);
+        foreach ($subjects as $subject) {
+            $accas = $acca1->getAccasBySubjects($subject['id_subject']);
+            // Wykorzystaj $accas do dalszych działań
+        }
+
+
         $grade1 = new GradeModel();
         $grades = array();
-        $grades = $grade1->getGrades((int) $student['id'], (int) $subjects['id_subject']);
+        for ($i = 0; $i < count($subjects); $i++) {
+            $grades = $grade1->getGrades($student['id'], $subjects[$i]['id_subject']);
+        }
         // var_dump($grades);
         // echo "            ";
         // var_dump((int) $student['id'], (int) $subjects['id_subject']);
@@ -72,16 +81,19 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
                                      <button type="submit"> Usuń </button>
                                 </form>
 
-                                <form action="FormNewGradeView.php" method="POST" style="display: inline-block;">
-                                     <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
-                                        <button type="submit"> Dodaj ocenę </button>
-                                 </form>
-                    </div>
-						</td>
-					</tr>
-                </tbody>
+                                <form action="FormNewGradeView.php" method="GET" style="display: inline-block;">
+                                <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
+                               
+                                <button type="submit" name="submit">Dodaj ocenę</button>
 
-            </table>
+                            </form>
+                            
+        </div>
+        </td>
+        </tr>
+        </tbody>
+
+        </table>
 
         </section>
         ';
@@ -94,37 +106,49 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
                     <tr>
                         <th>Semestr</th>
                         <th>Przedmiot</th>
+
                         <th>Oceny</th>
                         <th>Wystawione przez</th>
-                        <th>Data</th>
+                        <th>Szczegóły ocen</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    for ($i = 0; $i < count($subjects); $i++) {
+                        $accas = $acca1->getAccasBySubjects($subjects[$i]['id_subject']);
 
+                        $grades = $grade1->getGrades($student['id'], $subjects[$i]['id_subject']);
 
-                    <tr>
-                        <td>
-                            <?php echo $student['semestr']; ?>
-                        </td>
-                        <td>
-                            <?php echo $subjects['subject']; ?>
-                        </td>
-                        <td>
-                            <?php foreach ($grades as $grade): ?>
-                                <?php echo $grade['grade'] . '   '; ?>
-                            <?php endforeach; ?>
-                        </td>
-                        <td>
-                            <?php echo $accas['acca']; ?>
-                        </td>
-                        <td>
-                            <?php echo $grade['date']; ?>
-                        </td>
-                    </tr>
+                        echo '<tr>';
+                        echo '<td>' . $student['semestr'] . '</td>';
+                        echo '<td>' . $subjects[$i]['subject'] . '</td>';
 
+                        echo '<td>';
+                        foreach ($grades as $grade) {
+                            echo $grade['grade'] . '; ';
+                        }
+                        echo '</td>';
+                        echo '<td>';
+                        foreach ($accas as $acca) {
+                            echo $acca['acca'] . ' ';
+                        }
+                        echo '</td>';
+                        echo '<td>
+						<form action="GradesView.php" method="POST" style="display: inline-block;">
+                                     <input type="hidden" name="indeks" value="' . $student['indeks'] . '">
+                                     <input type="hidden" name="id" value="' . $student['id'] . '">
+                                     <input type="hidden" name="id_subject" value="' . $subjects[$i]['id_subject'] . '">
+                                     <input type="hidden" name="id_term" value="' . $student['semestr'] . '">
+                                     <button type="submit"> Szczegóły ocen </button>
+                                </form>
+						</td>';
 
+                        echo '</tr>';
+                    }
+                    ?>
                 </tbody>
             </table>
+
         </section>
 
     </main>

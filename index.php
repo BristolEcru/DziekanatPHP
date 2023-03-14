@@ -31,48 +31,51 @@ require 'C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php';
 				</button></a>
 
 
-
+			<a href="classes/FormNewStudentView.php"> <button>
+					<h2>Dodaj studenta</h2>
+				</button></a>
 
 		</section>
-		<a href="classes/FormNewStudentView.php"> <button>Dodaj studenta</button></a>
 		<section>
 
-
-			<h4>Oceny</h4>
+			<br>
+			<hr> <br>
+			<h2>Wykładowcy i przedmioty</h2>
 			<table>
 				<thead>
 					<tr>
 						<th>Przedmiot</th>
-						<th>Ocena</th>
-						<th>Data</th>
+						<th>Semestr</th>
 						<th>Prowadzący</th>
-						<th>Akcje</th>
+
 					</tr>
 				</thead>
+
 				<tbody>
-					<tr>
-						<td>Matematyka</td>
-						<td>5</td>
-						<td>2022-02-01</td>
-						<td>Jan Gniewosz</td>
-						<td>
-							<button>Edytuj</button>
-							<button>Usuń</button>
-						</td>
-					</tr>
-					<tr>
-						<td>Fizyka</td>
-						<td>4</td>
-						<td>2022-01-15</td>
-						<td>Maria Walaszek</td>
-						<td>
-							<button>Edytuj</button>
-							<button>Usuń</button>
-						</td>
-					</tr>
+					<?php
+
+
+					$acca1 = new AccaModel();
+					$sub1 = new SubjectModel();
+
+					$accas = $acca1->getAccas();
+					$subjects = $sub1->getSubjects();
+
+
+					for ($i = 0; $i < count($accas); $i++) {
+						echo '<tr> 
+						<td>' . $subjects[$i]['subject'] . ' </td>
+						<td>' . $subjects[$i]['id_term'] . '</td>
+						<td> ' . $accas[$i]['acca'] . '</td>
+						</tr>';
+					}
+					;
+
+
+					?>
 				</tbody>
 			</table>
-			<button>Dodaj ocenę</button>
+
 		</section>
 	</main>
 	<footer>

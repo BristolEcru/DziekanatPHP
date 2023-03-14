@@ -2,9 +2,9 @@
 require('C:\xampp\htdocs\DziekanatPHP\includes\autoloader.php');
 class SubjectModel extends StudentController
 {
-    private $id_subject;
-    private $subject;
-    private $id_term;
+    public $id_subject;
+    public $subject;
+    public $id_term;
 
     public function __construct()
     {
@@ -18,17 +18,31 @@ class SubjectModel extends StudentController
     // }
 
 
+    public function getSubjects()
+    {
 
+        $sql = "SELECT * from subjects ";
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute();
+        $result = array();
+        while ($row = $statement->fetch()) {
+            $result[] = $row;
+        }
 
-    public function getSubjects($term)
+        return $result;
+    }
+    public function getSubjectsInTerm($term)
     {
         $this->id_term = $term;
         $sql = "SELECT * from subjects where id_term = ?";
         $statement = $this->connect()->prepare($sql);
         $statement->execute([$term]);
+        $result = array();
+        while ($row = $statement->fetch()) {
+            $result[] = $row;
+        }
 
-        $result = $statement->fetchAll();
-        return $result[0];
+        return $result;
     }
     public function setStudent($imie, $nazwisko, $indeks, $semestr)
     {

@@ -4,7 +4,7 @@ class GradeModel extends StudentController
 {
     public $id;
     public float $grade;
-    public $date;
+    public $date = NULL;
     public $id_subject;
     public $id_term;
     public $id_student;
@@ -21,13 +21,14 @@ class GradeModel extends StudentController
     //     $this->id_student = $id_student;
     //     $this->id_acca = $id_acca;
     // }
-
-    public function addGrade($grade, $id_student, $id_subject, $id_term)
+    // , $date->format('Y-m-d')]
+    public function addGrade($grade, $id_student, $id_subject, $id_term, $id_acca)
     {
 
-        $sql = "INSERT INTO grades (grade, id_subject, id_student, id_term ) values (?,?,?,?)";
+        $date = date('Y-m-d');
+        $sql = "INSERT INTO grades (grade, id_subject, id_student, id_term, id_acca, date ) values (?,?,?,?,?,?)";
         $statement = $this->connect()->prepare($sql);
-        $statement->execute([$grade, $id_subject, $id_student, $id_term]);
+        $statement->execute([$grade, $id_subject, $id_student, $id_term, $id_acca, $date]);
     }
     public function getGrades($id_student, $id_subject)
     {
@@ -36,11 +37,27 @@ class GradeModel extends StudentController
         $sql = "SELECT * from grades where id_student = ? and id_subject = ?";
         $statement = $this->connect()->prepare($sql);
         $statement->execute([$id_student, $id_subject]);
+        $result = array();
+        while ($row = $statement->fetch()) {
+            $result[] = $row;
+        }
 
-        $result = $statement->fetchAll();
         return $result;
     }
-
+    public function deleteGrade($id_grade)
+    {
+        $this->id = $id_grade;
+        $sql = "DELETE from grades where id_grade=?";
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute([$id_grade]);
+    }
+    public function editGrade($id_grade, $grade)
+    {
+        $this->grade = $grade;
+        $sql = "UPDATE grades SET grade = ? WHERE id_grade = ? ";
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute([$grade, $id_grade]);
+    }
     public function getId()
     {
         return $this->id;
